@@ -2,7 +2,7 @@ function playAudio(id){
   const audio = JSON.parse(document.querySelector(`#${id}`).dataset.audio);
   document.querySelector('.audio-modal h4').innerText = `${audio.audioTitle}`;
   document.querySelector('.audio-modal .poster img').src = `/img/music/${audio.audioPoster}.jpg`;
-  document.querySelector('.audio-modal audio').src = `/audio/${audio.audioTitle}`;
+  document.querySelector('.audio-modal audio').src = `/audio/${audio.audioID}.mp3`;
   document.querySelector('.audio-modal').style.display = `flex`;
   document.querySelector('.audio-modal audio').play();
 }
