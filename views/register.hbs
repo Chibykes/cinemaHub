@@ -1,0 +1,36 @@
+<div class="login">
+    <a href="/">
+        <img src="/img/cinemaHub.svg" alt="">
+    </a>
+
+    <div class="login-box">
+        <h1 class="">Signup</h1>
+        <h3 class="pb-3">Let's get you started</h3>
+        <form action="/register" method="POST">
+        {{>alert}}
+            <div class="input-container">
+                <label for="fullname">
+                    Enter Fullname
+                </label>
+                <input type="text" name="fullname" required>
+            </div>
+            <div class="input-container">
+                <label for="email">
+                    Enter Email
+                </label>
+                <input type="text" name="email" required>
+            </div>
+            <div class="input-container">
+                <label for="password">
+                    Enter Password
+                </label>
+                <input type="password" name="password" required>
+            </div>
+            <div class="submit-button">
+                <input type="submit" value="Register">
+            </div>
+            <hr />
+            <p class="">Already have an account? <a class="" style="color: var(--site-yellow)!important;" href="/login">Sign In</a></p>
+        </form>
+    </div>
+</div>

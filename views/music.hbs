@@ -1,0 +1,56 @@
+{{> header}}
+    <section id="music" class="container">
+        <h2 class="bold px-lg-2 py-lg-4">Play Songs</h2>
+        <div class="col-lg-4 ml-auto">
+            {{> alert}}
+        </div>
+        <div class="row">
+            <div class="col-lg-4 p-4">
+                <div class="movie-poster music">
+                    <div class="poster">
+                        <img src="/img/music/add-music.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <a href="/add-song">
+                            <img width="150rem" style="cursor: pointer" src="/img/add.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <p class="book-movie py-3" style="text-align: center; cursor: pointer;">Add Song</p>
+            </div>
+
+            {{#if audios}}
+                {{#each audios}}
+                    <div class="col-lg-4 p-4">
+                        <div class="movie-poster music">
+                            <div class="poster">
+                                <img src="/img/music/{{this.audioPoster}}.jpg" alt="">
+                            </div>
+                            <div class="poster-details">
+                                <img width="150rem" style="cursor: pointer" src="/img/play.svg" onclick="playAudio('{{this.audioID}}')" alt="">
+                                <fieldset id="{{this.audioID}}" data-audio="{{stringIt this}}"></fieldset>
+                                {{!-- <audio id="{{this.audioID}}" style="" src="/audio/{{this.audioTitle}}" controls></audio> --}}
+                            </div>
+                        </div>
+                        <p class="book-movie py-3 text-capitalize" style="text-align: center; cursor: pointer;">{{this.audioTitle}}</p>
+                    </div>
+                {{/each}}
+            {{/if}}
+
+        </div>
+    </section>
+
+    <div class="audio-modal">
+        <h2 class="close-btn" onclick="closeModal()">&times;</h2>
+        <div class="col-lg-4 mx-auto">
+            <h4 class="text-capitalize text-center pb-3" style="color: #fff;"></h4>
+            <div class="poster">
+                <img src="" alt="">
+            </div>
+
+            <div class="py-4">
+                <audio style="width: 100%;" src="" controls></audio>
+            </div>
+        </div>
+    </div>
+{{> footer}}

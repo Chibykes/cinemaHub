@@ -1,0 +1,200 @@
+{{> header}}
+
+<section class="py-5">
+    <div class="mx-auto container">
+        <h2 class="bold px-lg-2 py-lg-4">Now Showing</h2>
+        <div class="row">
+            {{#if movies}}
+                {{#each movies}}
+                    <div class="col-lg-3 p-4">
+                        <div class="movie-poster">
+                            <div class="poster">
+                                <img src="/img/movies/{{this.movieID}}.jpg" alt="">
+                            </div>
+                            <div class="poster-details">
+                                <strong class="">Duration:</strong>
+                                <p class="">
+                                    <span>{{this.duration}} Minutes</span>
+                                </p>
+                                <strong class="">Next Showing Time:</strong>
+                                <p class="">
+                                    <span>{{firstdate this.showingTime}}</span>
+                                    <span>{{firsttime this.showingTime}} GMT</span>
+                                </p>
+                                <a class="book-movie" href="/movie/{{this.movieID}}">Movie Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>
+    <!-- <div class="col-lg-3 py-lg-4 mx-auto">
+        <a href="view-movies.html" class="btn-lg more-btn text-center">More</a>
+    </div> -->
+</section>
+
+{{!-- <section class="pb-5">
+    <div class="mx-auto container">
+        <h2 class="bold px-lg-2 py-lg-4">Upcoming Movies</h2>
+        <div class="row">
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/joker.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/IO-poster-1.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/1490203947-kong-skull-island-poster.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/61FWNPBWtmL._AC_SL1393_.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/joker.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/IO-poster-1.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/1490203947-kong-skull-island-poster.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 p-4">
+                <div class="movie-poster">
+                    <div class="poster">
+                        <img src="/img/61FWNPBWtmL._AC_SL1393_.jpg" alt="">
+                    </div>
+                    <div class="poster-details">
+                        <strong class="">Duration:</strong>
+                        <p class="">
+                            <span>180 Minutes</span>
+                        </p>
+                        <strong class="">Next Showing Time:</strong>
+                        <p class="">
+                            <span>22/02/2021</span>
+                            <span>14:00 GMT</span>
+                        </p>
+                        <a class="book-movie" href="/movie/">Movie Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 py-lg-4 mx-auto">
+        <a href="/view-movies" class="btn-lg more-btn text-center">Next</a>
+    </div>
+</section> --}}
+
+{{> footer}}

@@ -1,0 +1,289 @@
+{{> header}}
+
+    <section id="" class="container">
+        <form class="upload-movie col-lg-6 mx-auto py-5" method="POST" action="/upload-movie">
+            {{> alert}}
+            <h2 class="bold py-lg-4">Add Movie</h2>
+            <div class="image-upload col-lg-12 p-0" style="position: relative;">
+                <label for="poster">Movie Poster</label>
+                <input
+                    class="filepond d-block p-2 black" 
+                    type="file" 
+                    name="poster"
+                    data-allow-reorder="true"
+                    data-max-file-size="10MB"
+                    data-max-files="1"
+                    value=""
+                    required
+                >
+            </div>
+            <div class="col-lg-12 py-3 px-0" style="position: relative;">
+                <label for="poster">Movie Name</label>
+                <input
+                    class="d-block p-2 black" 
+                    type="text" 
+                    name="title"
+                    value=""
+                    required
+                    
+                >
+            </div>
+            <div class="col-lg-12 py-3 px-0" style="position: relative;">
+                <label for="poster">Movie Description</label>
+                <textarea
+                    class="d-block p-2 black" 
+                    type="text" 
+                    name="description"
+                    value=""
+                    required
+                    
+                ></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 py-3" style="position: relative;">
+                    <label for="poster">Duration (minutes)</label>
+                    <input
+                        class="d-block p-2 black" 
+                        type="number" 
+                        name="duration"
+                        value=""
+                        required
+                        
+                    >
+                </div>
+                <div class="col-lg-6 py-3" style="position: relative;">
+                    <label for="poster">Language</label>
+                    <select name="language" required>
+                        <option value="English (US)">English (US)</option>
+                        <option value="English (UK)">English (UK)</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Spanish">Spanish</option>
+                    </select>
+                </div>
+                <div class="col-lg-12 py-3" style="position: relative;">
+                    <label for="poster">Genre</label>
+                    <input type="hidden" name="genre" value="">
+                    {{!-- <select name="genre"  class="text-capitalize" required multiple size="1">
+                        <option value="horror">Horror</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="action">Action</option>
+                        <option value="sci-fi">Sci-Fi</option>
+                        <option value="comedy">comedy</option>
+                        <option value="drama">drama</option>
+                        <option value="romance">romance</option>
+                        <option value="musical">musical</option>
+                        <option value="crime">crime</option>
+                        <option value="documentry">documentry</option>
+                        <option value="war">war</option>
+                        <option value="mystery">mystery</option>
+                        <option value="fantasy">fantasy</option>
+                    </select> --}}
+                    <div class="row">
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">Horror</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">Thriller</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">Action</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">Sci-Fi</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">comedy</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">drama</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">romance</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">musical</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">crime</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">documentry</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">war</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">mystery</p></div>
+                        <div class="d-inline p-2"><p class="tags px-4 py-1 m-0 bold text-lowercase">fantasy</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 py-3 px-0" style="position: relative;">
+                <label for="poster">Cast</label>
+                <div id="cast">
+                    <div class="row mb-3 group">
+                        <div class="col-lg-5 py-1" style="position: relative;">
+                            <label for="poster" style="font-weight: normal;">Actor/Actress</label>
+                            <input
+                                class="d-block p-2 black" 
+                                type="text" 
+                                name="cast[actor]"
+                                value=""
+                                required
+                            >
+                        </div>
+                        <div class="col-lg-5 py-1" style="position: relative;">
+                            <label for="poster" style="font-weight: normal;">Role</label>
+                            <input
+                                class="d-block p-2 black" 
+                                type="text" 
+                                name="cast[role]"
+                                value=""
+                                required
+                            >
+                        </div>
+                        <div class="col-lg-2 py-1 d-flex justify-content-center align-items-end" style="position: relative;">
+                            <span class="add-btn remove-btn">&times;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 mx-auto py-1 d-flex justify-content-center align-items-center" style="position: relative;">
+                    <span class="add-btn" onclick="addCast()">&plus;</span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 py-3 px-0" style="position: relative;">
+                <label for="poster">Showing Times</label>
+                <div id="showing-times">
+                    <div class="row mb-3 group">
+                        <div class="col-lg-10 row">
+                            <div class="col-lg-6 py-1" style="position: relative;">
+                                <label for="poster" style="font-weight: normal;">Date</label>
+                                <input
+                                    class="d-block p-2 black"
+                                    type="date"
+                                    name="showingTime[date]"
+                                    value=""
+                                    min="{{min_date}}"
+                                    required
+                                >
+                            </div>
+                            <div class="col-lg-6 py-1" style="position: relative;">
+                                <label for="poster" style="font-weight: normal;">Time</label>
+                                <input
+                                    class="d-block p-2 black" 
+                                    type="time" 
+                                    name="showingTime[time]"
+                                    value=""
+                                    required
+                                >
+                            </div>
+                            <div class="col-lg-12 py-1" style="position: relative;">
+                                <label for="poster" style="font-weight: normal;">Viewing Hall</label>
+                                <select name="showingTime[hall]" required>
+                                    <option value="hall 1">Hall 1</option>
+                                    <option value="hall 2">Hall 2</option>
+                                    <option value="hall 3">Hall 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 py-1 d-flex justify-content-center align-items-center" style="position: relative;">
+                            <span class="add-btn remove-btn">&times;</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 mx-auto py-1 d-flex justify-content-center align-items-center" style="position: relative;">
+                    <span class="add-btn" onclick="addShowTime()">&plus;</span>
+                </div>
+            </div>
+
+            <div class="col-lg-12 px-0 py-3" style="position: relative;">
+                <label for="poster">Price (&#8358;)</label>
+                <input
+                    class="d-block p-2 black" 
+                    type="number" 
+                    name="price"
+                    min="500"
+                    value="500"
+                    required
+                >
+            </div>
+
+            <div class="col-12 submit-button">
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+    </section>
+
+<div class="clone d-none">
+    <div class="row mb-3 group">
+        <div class="col-lg-5 py-1" style="position: relative;">
+            <label for="poster" style="font-weight: normal;">Actor/Actress</label>
+            <input
+                class="d-block p-2 black" 
+                type="text" 
+                name="cast[actor]"
+                value=""
+                required
+            >
+        </div>
+        <div class="col-lg-5 py-1" style="position: relative;">
+            <label for="poster" style="font-weight: normal;">Role</label>
+            <input
+                class="d-block p-2 black" 
+                type="text" 
+                name="cast[role]"
+                value=""
+                required
+            >
+        </div>
+        <div class="col-lg-2 py-1 d-flex justify-content-center align-items-end" style="position: relative;">
+            <span class="add-btn remove-btn">&times;</span>
+        </div>
+    </div>
+
+    {{!-- <div class="row">
+        <div class="col-lg-5 py-1" style="position: relative;">
+            <label for="poster" style="font-weight: normal;">Date</label>
+            <input
+                class="d-block p-2 black"
+                type="date"
+                name="showingTime[date]"
+                value=""
+                required
+                
+            >
+        </div>
+        <div class="col-lg-5 py-1" style="position: relative;">
+            <label for="poster" style="font-weight: normal;">Time</label>
+            <input
+                class="d-block p-2 black" 
+                type="time" 
+                name="showingTime[time]"
+                value=""
+                required
+                
+            >
+        </div>
+        <div class="col-lg-2 py-1 d-flex justify-content-center align-items-end" style="position: relative;">
+            <span class="add-btn remove-btn">&times;</span>
+        </div>
+    </div> --}}
+
+    <div class="row mb-3 group">
+        <div class="col-lg-10 row">
+            <div class="col-lg-6 py-1" style="position: relative;">
+                <label for="poster" style="font-weight: normal;">Date</label>
+                <input
+                    class="d-block p-2 black"
+                    type="date"
+                    name="showingTime[date]"
+                    value=""
+                    required
+                >
+            </div>
+            <div class="col-lg-6 py-1" style="position: relative;">
+                <label for="poster" style="font-weight: normal;">Time</label>
+                <input
+                    class="d-block p-2 black" 
+                    type="time" 
+                    name="showingTime[time]"
+                    value=""
+                    required
+                >
+            </div>
+            <div class="col-lg-12 py-1" style="position: relative;">
+                <label for="poster" style="font-weight: normal;">Viewing Hall</label>
+                <select name="showingTime[hall]" required>
+                    <option value="hall 1">Hall 1</option>
+                    <option value="hall 2">Hall 2</option>
+                    <option value="hall 3">Hall 3</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-2 py-1 d-flex justify-content-center align-items-center" style="position: relative;">
+            <span class="add-btn remove-btn">&times;</span>
+        </div>
+    </div>
+</div>
+
+{{> footer}}

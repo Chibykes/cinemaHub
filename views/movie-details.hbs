@@ -1,0 +1,146 @@
+{{> header}}
+
+<div class="container py-5 movie-details">
+    <div class="row">
+        <div class="col-lg-4 pr-lg-4">
+            <div class="movie-image">
+                <img src="/img/movies/{{movie.movieID}}.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <h1 class="movie-title m-0 py-4 pt-lg-0 text-capitalize">{{movie.title}}</h1>
+            <p class="movie-desc">
+                {{movie.description}}
+            </p>
+            <div class="row col-lg-12 movie-more-info">
+                <div class="col-lg-6 px-0 py-3">
+                    <strong>Duration: </strong><span>{{movie.duration}} Minutes</span>
+                </div>
+                <div class="col-lg-6 px-0 py-3">
+                    <strong>Language: </strong><span>{{movie.language}}</span>
+                </div>
+                <div class="col-lg-6 px-0 py-3 text-capitalize">
+                    <strong>Genre: </strong><span>{{movie.genre}}</span>
+                </div>
+                {{!-- <div class="col-lg-6 px-0 py-3">
+                    <strong>Subtitle: </strong><span>{{English}}</span>
+                </div> --}}
+            </div>
+            <div class="col-lg-12 pt-3">
+                <div id="book-movie" class="more-btn text-center col-white">Book Movie</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-lg-6 py-4">
+            <h1>Cast</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Actor/Actress</th>
+                        <th>Roles</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                    {{#if movie.cast}}
+                        {{#each movie.cast}}
+                            <tr>
+                                <td>{{this.actor}}</td>
+                                <td>{{this.role}}</td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6 py-4">
+            <h1>Showing Times</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Movie Hall</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if movie.showingTime}}
+                        {{#each movie.showingTime}}
+                            <tr>
+                                <td>{{this.date}}</td>
+                                <td>{{this.time}}</td>
+                                <td class="text-capitalize">{{this.hall}}</td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="audio-modal">
+    <h2 class="close-btn" onclick="closeModal()">&times;</h2>
+    <div class="reservation bg-white py-5 col-lg-4 rounded">
+        <form action="/movie/{{movie.movieID}}" method="POST" class="upload-movie">
+            <h1 class="text-capitalize bold text-uppercase text-center" style="color: var(--site-yellow);">
+                &#8358;{{amountSplit movie.price}}
+            </h1>
+            <small class="d-block text-center text-warning">*Ticket Price</small>
+            <div class="col-lg-12 py-1" style="position: relative;">
+                <label for="poster" style="font-weight: normal;">Title</label>
+                <input
+                    class="d-block p-2 black text-capitalize" 
+                    type="text" 
+                    name="title"
+                    value="{{movie.title}}"
+                    disabled
+                >
+            </div>
+            <div class="col-lg-12 py-1" style="position: relative;">
+                <label for="poster" style="font-weight: normal;">Duration</label>
+                <input
+                    class="d-block p-2 black text-capitalize" 
+                    type="text" 
+                    name="title"
+                    value="{{movie.duration}} minutes"
+                    disabled
+                >
+            </div>
+            {{!-- <div class="col-lg-12 py-1" style="position: relative;">
+                <label for="hall" style="font-weight: normal;">Viewing Hall</label>
+                <select name="hall" required>
+                    <option value="">Choose Viewing Hall</option>
+                    <option value="hall 1">Hall 1</option>
+                    <option value="hall 2">Hall 2</option>
+                    <option value="hall 3">Hall 3</option>
+                </select>
+            </div> --}}
+            <div class="col-lg-12 py-1" style="position: relative;">
+                <label for="showingTime" style="font-weight: normal;">Date,Time and Hall</label>
+                <select name="showingTime" class="py-3" required>
+                    <option value="">Choose,Date Time and Hall</option>
+                    {{#each movie.showingTime}}
+                        <option 
+                            class="text-capitalize"
+                            value="{{this.date}}/{{this.time}}/{{this.hall}}">
+                            {{this.date}} by {{this.time}} @ {{this.hall}}
+                        </option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col-8 submit-button pb-0 mb-0 mx-auto">
+                <input type="submit" class="p-3" value="Book" style="font-size: 15px;">
+            </div>
+
+            <small class="col-12 submit-button pb-0 mb-0 mx-auto d-block text-center">
+                *You will be required to pay &#8358;{{amountSplit movie.price}}
+                at the cinema hall before watching your movie..
+            </small>
+        </form>
+    </div>
+</div>
+
+{{> footer}}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    {{#if filepond}}
+        {{!-- <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+        <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"> --}}
+        <link href="/css/filepond.css" rel="stylesheet">
+        <link href="/css/filepond-plugin-image-preview.css" rel="stylesheet">
+    {{/if}}
+</head>
+    <body>
+        {{{body}}}
+        
+        {{!-- <script src="/js/jquery.min.js"></script> --}}
+        {{#if filepond}}
+            {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/filepond/4.25.1/filepond.min.js"></script>
+            <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
+            <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js"></script>
+            <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js"></script>
+            <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script> --}}
+
+            <script src="/js/filepond.min.js"></script>
+            <script src="/js/filepond-plugin-file-encode.min.js"></script>
+            <script src="/js/filepond-plugin-file-validate-size.min.js"></script>
+            <script src="/js/filepond-plugin-image-exif-orientation.min.js"></script>
+            <script src="/js/filepond-plugin-image-preview.js"></script>
+
+            <script>
+                FilePond.registerPlugin(
+                    FilePondPluginImagePreview,
+                    FilePondPluginImageExifOrientation,
+                    FilePondPluginFileValidateSize,
+                    FilePondPluginFileEncode
+                );
+
+                // Select the file input and use 
+                // create() to turn it into a pond
+                let inputElements = document.querySelectorAll('input[type="file"]');
+                Array.from(inputElements).forEach(inputElement => {
+                    // create a FilePond instance at the input element location
+                    FilePond.create(inputElement);
+                })
+
+                FilePond.setOptions({ 
+                    stylePlaneAspectRatio: 150/150,
+                    imageResizeTargetWidth: 150,
+                    imageResizeTargetHeight: 150,
+                })
+            </script>
+        {{/if}}
+        <script src="/js/script.js"></script>
+    </body>
+</html>

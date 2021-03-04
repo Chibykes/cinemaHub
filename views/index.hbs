@@ -1,0 +1,92 @@
+{{> header}}
+
+<div class="home">
+    <video src="/videos/jb.mp4" autoplay muted></video>
+
+    <div class="cover-bg"></div>
+    <div class="main-section">
+        <section>
+            <!-- <img style="width: 30rem;" src="/img/cinemaHub-white.svg" alt=""> -->
+            <h1 class="pl-2" style="font-size: 5rem; color: #fff;"><strong>Great movies at your reach</strong></h1>
+            <h4 class="pl-2">
+                <small>MADE BY </small>
+                <strong>GROUP 23</strong>
+            </h4>
+        </section>
+        <div class="sample-movies">
+            
+        </div>
+    </div>
+</div>
+
+<section id="welcome-note" class="px-lg-5 py-5">
+    <div class="col-lg-8 mx-auto py-lg-5">
+        <h1 class="text-center">
+            <img class="d-block mx-auto" style="width: 15rem;" src="/img/cinemaHub.svg">
+        </h1>
+        <p class="text-center" style="font-size: 20px;">
+            This is a movie reservation system done by <strong>Group 23</strong> in partial fulliment to the course <strong>CSC 414</strong> taught by Mr Sam & Mrs Chioma.
+            This Movie Reservation system allows users to book movies available for display at the cinema and keep track and also save each booking tickets.
+        </p>
+    </div>
+</section>
+
+<section id="" class="ads py-5">
+    <div class="cover-bg"></div>
+    <div class="main-section">
+        <h1 class="col-white m-0 py-5">
+            Great Cinema Experience
+        </h1>
+    </div>
+</section>
+
+<section class="py-5">
+    <h2 class="text-center bold py-lg-4">Now Showing</h2>
+    <div class="row mx-auto container">
+        {{#if movies}}
+            {{#each movies}}
+                <div class="col-lg-3 p-4">
+                    <div class="movie-poster">
+                        <div class="poster">
+                            <img src="/img/movies/{{this.movieID}}.jpg" alt="">
+                        </div>
+                        <div class="poster-details">
+                            <strong class="">Duration:</strong>
+                            <p class="">
+                                <span>{{this.duration}} Minutes</span>
+                            </p>
+                            <strong class="">Next Showing Time:</strong>
+                            <p class="">
+                                <span>{{firstdate this.showingTime}}</span>
+                                <span>{{firsttime this.showingTime}} GMT</span>
+                            </p>
+                            <a class="book-movie" href="/movie/{{this.movieID}}">Movie Details</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+    </div>
+    <div class="col-lg-3 py-lg-4 mx-auto">
+        <a href="/view-movies" class="btn-lg more-btn text-center">More</a>
+    </div>
+</section>
+
+{{> footer}}
+
+<script>
+    let video = document.getElementsByTagName('video')[0];
+    document.querySelector('.home').onclick = function(){
+        if(video.paused){
+            video.load();
+            video.play();
+        }
+    }
+    setInterval(()=>{
+        if(video.src == window.location.origin+'/videos/jb.mp4'){
+            video.src = window.location.origin+'/videos/f9.mp4';
+        } else {
+            video.src = window.location.origin+'/videos/jb.mp4';
+        }
+    },120000);
+</script>

@@ -1,0 +1,34 @@
+<div class="login reservation-ticket">
+    <div class="login-box movie-reserv text-capitalize" style="padding-left: 0; padding-right: 0; padding-bottom: 0; border-bottom: none;">
+        <h1 class="text-uppercase bold">{{reservation.ticketID}}</h1>
+        <h3 class="">Reservation Code</h3>
+        <div class="movie-reservation-details">
+            <div class="reserv">
+                <p class="">Movie</p>
+                <p class="reserv-details">{{movie.title}}</p>
+            </div>
+            <div class="reserv">
+                <p class="">Duration</p>
+                <p class="reserv-details">{{movie.duration}} Minutes</p>
+            </div>
+            <div class="reserv">
+                <p class="">Time</p>
+                <p class="reserv-details">{{reservation.showingDate}} - {{reservation.showingTime}} GMT</p>
+            </div>
+            <div class="reserv">
+                <p class="">Showing At</p>
+                <p class="reserv-details">{{reservation.showingHall}}</p>
+            </div>
+            <div class="reserv">
+                <p class="">Amount To Pay</p>
+                <p class="reserv-details">&#8358;{{amountSplit movie.price}}</p>
+            </div>
+        </div>
+        <div class="reserv-footer">
+            <img style="width: 10rem;" src="/img/cinemaHub.svg" alt="">
+            <p class="" style="text-align: center; margin: 0;">&copy; Copyright 2021</p>
+            <a class="print-btn">Print</a>
+            <img style="width: 102%; margin-left: -1%;" src="/img/ticket.svg" alt="">
+        </div>
+    </div>
+</div>

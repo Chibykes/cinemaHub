@@ -1,0 +1,30 @@
+<div class="col-12 px-0">
+    {{#if errors}}
+        {{#each errors}}
+            <div class="alert col-white bg-warning alert-dismissible" role="alert">
+                <p class="m-0 p-2">{{this.msg}}</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {{/each}}
+    {{/if}}
+
+    {{#if error}}
+        <div class="alert col-white bg-danger alert-dismissible" role="alert">
+            <p class="m-0 p-2" style="color: #fff!important;">{{error}}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+
+    {{#if success}}
+        <div class="alert col-white bg-success alert-dismissible" role="alert">
+            <p class="m-0 p-2" style="color: #fff!important;">{{success}}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+</div>
