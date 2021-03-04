@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1140" height="257.001" viewBox="0 0 1140 257.001">
+  <defs>
+    <filter id="Intersection_1" x="0" y="0" width="1140" height="257.001" filterUnits="userSpaceOnUse">
+      <feOffset dy="20" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Intersection_1)">
+    <path id="Intersection_1-2" data-name="Intersection 1" d="M-8840,1633l-106,0c0-.167,0-.335,0-.5a63.57,63.57,0,0,0-63.5-63.5,63.572,63.572,0,0,0-63.5,63.5c0,.165,0,.33,0,.495l-34,.005v-.5c0-35.015-28.709-63.5-64-63.5s-64,28.485-64,63.5c0,.165,0,.33,0,.495l-34,.005v-.5a63.57,63.57,0,0,0-63.5-63.5,63.57,63.57,0,0,0-63.5,63.5v.5h-34v-.5a63.569,63.569,0,0,0-63.5-63.5,63.573,63.573,0,0,0-63.5,63.5c0,.165,0,.33,0,.495l-34,.005c0-.167,0-.335,0-.5,0-35.015-28.709-63.5-64-63.5s-64,28.485-64,63.5v.5h-34v-.5a63.571,63.571,0,0,0-63.5-63.5,63.572,63.572,0,0,0-63.5,63.5c0,.165,0,.33,0,.495l-70,.005V1411h1110v222Z" transform="translate(9965 -1411)" fill="#fff"/>
+  </g>
+</svg>
