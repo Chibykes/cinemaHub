@@ -125,6 +125,9 @@ app.get('/music', ensureUserIsAuthenticated, async(req, res)=>{
 });
 
 app.get('/add-song', ensureUserIsAuthenticated, (req, res)=>{
+    if(!fs.existsSync(path.resolve(__dirname,'../public/audio'))){
+        fs.mkdirSync(path.resolve(__dirname,'../public/audio'));
+    }
     res.render('add-song', {
         title: 'Add Song',
         user: req.user,
@@ -138,13 +141,17 @@ app.post('/add-song', ensureUserIsAuthenticated, (req, res)=>{
     let audioID = `song-${genMemberId(5)}`;
     audio = JSON.parse(audio);
     const buffer = Buffer.from(audio.data, "base64");
-    console.log(__dirname);
-    console.log(path.resolve(__dirname,'../public/audio/', audio.name.replace(/_/g,' ')));
+    if(!fs.existsSync(path.resolve(__dirname,'../public/audio'))){
+        fs.mkdirSync(path.resolve(__dirname,'../public/audio'));
+    }
     fs.writeFileSync(path.resolve(__dirname,'../public/audio/', audio.name.replace(/_/g,' ')), buffer);
 
     if(audioPoster){
         audioPoster = JSON.parse(audioPoster);
         const buffer = Buffer.from(audioPoster.data, "base64");
+        if(!fs.existsSync(path.resolve(__dirname,'../public/img/music'))){
+            fs.mkdirSync(path.resolve(__dirname,'../public/img/music'));
+        }
         fs.writeFileSync(path.resolve(__dirname,'../public/img/music/', `${audioID}.jpg`), buffer);
 
         audioPoster = `${audioID}`;
@@ -193,6 +200,9 @@ app.post('/upload-movie', ensureUserIsAuthenticated, (req, res)=>{
 
     poster = JSON.parse(poster);
     const buffer = Buffer.from(poster.data, "base64");
+    if(!fs.existsSync(path.resolve(__dirname,'../public/img/movies'))){
+        fs.mkdirSync(path.resolve(__dirname,'../public/img/movies'));
+    }
     fs.writeFileSync(path.resolve(__dirname,'../public/img/movies/', movieID +'.jpg'), buffer);
 
     let showingTimeArray = [];
