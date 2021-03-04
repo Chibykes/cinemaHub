@@ -138,6 +138,8 @@ app.post('/add-song', ensureUserIsAuthenticated, (req, res)=>{
     let audioID = `song-${genMemberId(5)}`;
     audio = JSON.parse(audio);
     const buffer = Buffer.from(audio.data, "base64");
+    console.log(__dirname);
+    console.log(path.resolve(__dirname,'../public/audio/', audio.name.replace(/_/g,' ')));
     fs.writeFileSync(path.resolve(__dirname,'../public/audio/', audio.name.replace(/_/g,' ')), buffer);
 
     if(audioPoster){
