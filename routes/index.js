@@ -144,7 +144,7 @@ app.post('/add-song', ensureUserIsAuthenticated, (req, res)=>{
     if(!fs.existsSync(path.resolve(__dirname,'../public/audio'))){
         fs.mkdirSync(path.resolve(__dirname,'../public/audio'));
     }
-    fs.writeFileSync(path.resolve(__dirname,'../public/audio/', audio.name.replace(/_/g,' ')), buffer);
+    fs.writeFileSync(path.resolve(__dirname,'../public/audio/', audioID+'.mp3'), buffer);
 
     if(audioPoster){
         audioPoster = JSON.parse(audioPoster);
